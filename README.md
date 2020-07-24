@@ -1,2 +1,2 @@
-# pointy_backend
+# Customer management system MVP
 
