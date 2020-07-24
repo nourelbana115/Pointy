@@ -1,0 +1,113 @@
+<%- contentFor('title')%>
+Emails
+
+<%- contentFor('breadcrumb_title')%>
+Emails
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Ads</li>
+<li class="breadcrumb-item">Emails</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="email-wrap">
+    <div class="row">
+      <div class="col-xl-3 col-md-3">
+        <div class="email-right-aside">
+          <div class="card email-body">
+            <div class="pr-0 b-r-light">
+              <div class="email-top">
+                <div class="row">
+                  <div class="col">
+                    <h5>Sent Emails</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="inbox">
+                <% for (email of emails) { %>
+                <div class="media">
+                  <div class="media-body">
+                    <h5><%= email.title %>
+                      <small>(<%= email.sentAt.getDate() %>/<%= email.sentAt.getMonth() + 1 %>/<%= email.sentAt.getFullYear () %>)</small>
+                    </h5>
+                    <p><%- email.content %></p>
+                    <br>
+                    <h6>Segment: <%= email.segmentName %></h6>
+                  </div>
+                </div>
+                <hr>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-md-9">
+        <div class="email-right-aside">
+          <div class="card email-body radius-left">
+            <div class="pl-0">
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="pills-darkhome" role="tabpanel"
+                  aria-labelledby="pills-darkhome-tab">
+                  <div class="email-compose">
+                    <div class="email-top compose-border">
+                      <div class="row">
+                        <% if(error.length) { %>
+                        <div class="col-sm-12 alert alert-danger"  role="alert">
+                          <h6><%= error %></h6>
+                        </div>
+                        <% }%>
+                        <% if(success.length) { %>
+                        <div class="col-sm-12 alert alert-success"  role="alert">
+                          <h6><%= success %></h6>
+                        </div>
+                        <% }%>
+                        <div class="col-sm-8 xl-50">
+                          <h4 class="mb-0">New Message</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="email-wrapper">
+                      <form action="/api/v1/ad/send" method="POST" class="theme-form">
+                        <div class="form-group">
+                          <label for="col-form-label">Segment</label>
+                          <select name="segmentName" class="form-control digits">
+                            <option value="everyone">Everyone</option>
+                            <option value="superFans">Super Fans</option>
+                            <option value="newCustomers">New Customers</option>
+                            <option value="birthday">Birthday Customers</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="subject">Subject</label>
+                          <input name="title" class="form-control" id="subject" type="text" required>
+                        </div>
+                        <div class="form-group">
+                          <label class="text-muted">Message</label>
+                          <textarea name="content" id="text-box" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary btn-block btn-mail text-center mb-0 mt-0" type="submit"><i
+                              class="fa fa-paper-plane mr-2"></i> SEND</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+<script src="<%= global.url %>assets/js/editor/ckeditor/ckeditor.js"></script>
+<script src="<%= global.url %>assets/js/editor/ckeditor/styles.js"></script>
+<script src="<%= global.url %>assets/js/editor/ckeditor/adapters/jquery.js"></script>
+<script src="<%= global.url %>assets/js/email-app.js"></script>
+<script src="<%= global.url %>assets/js/tooltip-init.js"></script>

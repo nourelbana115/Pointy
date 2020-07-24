@@ -1,0 +1,75 @@
+<link rel="stylesheet" type="text/css" href="<%= global.url %>assets/css/date-picker.css">
+
+<%- contentFor('title')%>
+Create Customer
+
+<%- contentFor('breadcrumb_title')%>
+Create Customer
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Customers</li>
+<li class="breadcrumb-item">Create Customer</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <% if(error.length) { %>
+        <div class="col-sm-12 alert alert-danger" role="alert">
+          <h6><%= error %></h6>
+        </div>
+        <% }%>
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Create Customer</h5>
+            </div>
+            <div class="card-body">
+              <form action="/api/v1/customer/create" method="POST" class="theme-form mega-form">
+                <h6>Customer Information</h6>
+                <div class="form-group">
+                  <label class="col-form-label">Name</label>
+                  <input name="name" class="form-control" type="text" placeholder="Test" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Email</label>
+                  <input name="email" class="form-control" type="email" placeholder="test@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Phone Number</label>
+                  <input name="phoneNumber" class="form-control" type="text" placeholder="01xxxxxxxxx" minlength="11"
+                    maxlength="11" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Points</label>
+                  <input name="points" class="form-control" type="number" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Visists</label>
+                  <input name="visits" class="form-control" type="number" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Birthday</label>
+                  <input name="birthday" class="datepicker-here form-control digits" type="text" data-language="en"
+                    required>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<script src="<%= global.url %>assets/js/datepicker/date-picker/datepicker.js"></script>
+<script src="<%= global.url %>assets/js/datepicker/date-picker/datepicker.en.js"></script>
+<script src="<%= global.url %>assets/js/datepicker/date-picker/datepicker.custom.js"></script>
+<script src="<%= global.url %>assets/js/tooltip-init.js"></script>

@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="<%= global.url %>assets/css/datatables.css">
+
+<%- contentFor('title')%>
+Customer List
+
+<%- contentFor('breadcrumb_title')%>
+Customer list
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Customer</li>
+<li class="breadcrumb-item">Customer List</li>
+
+<%- contentFor('body') %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <a href="/customer/create" class="btn btn-lg btn-success pull-right">Create Customer</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="display" id="basic-1">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Points</th>
+                  <th>Visits</th>
+                  <th>Birthday</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(customer of customers) { %>
+                <tr>
+                  <th><%= customer.name %></th>
+                  <th><%= customer.email %></th>
+                  <th><%= customer.phoneNumber %></th>
+                  <th><%= customer.points %></th>
+                  <th><%= customer.visits %></th>
+                  <% if(customer.birthday) { %>
+                  <th><%= customer.birthday.toDateString() %></th>
+                  <% } %>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="<%= global.url %>assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="<%= global.url %>assets/js/datatable/datatables/datatable.custom.js"></script>
+<script src="<%= global.url %>assets/js/tooltip-init.js"></script>

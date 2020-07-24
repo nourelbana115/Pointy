@@ -1,0 +1,62 @@
+<%- contentFor('title')%>
+Edit Merchant
+
+<%- contentFor('breadcrumb_title')%>
+Edit Merchant
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Merchant</li>
+<li class="breadcrumb-item">Edit Merchant</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <% if(error.length) { %>
+        <div class="col-sm-12 alert alert-danger" role="alert">
+          <h6><%= error %></h6>
+        </div>
+        <% }%>
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Edit Information</h5>
+            </div>
+            <div class="card-body">
+              <form action="/api/v1/merchant/edit" enctype="multipart/form-data" method="POST" class="form theme-form">
+                <h6>Merchant Information</h6>
+                <div class="form-group">
+                  <label class="col-form-label">Name</label>
+                  <input name="name" class="form-control" type="text" value='<%= merchant.name %>' required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Email</label>
+                  <input name="email" class="form-control" type="text" value='<%= merchant.email %>' required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Phone Number</label>
+                  <input type="text" name="phoneNumber" class="form-control" value='<%= merchant.phoneNumber %>' required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Link</label>
+                  <input type="text" name="link" class="form-control" value='<%= merchant.link %>' required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Image</label>
+                  <input name="merchantImageUrl" class="form-control" type="file">
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

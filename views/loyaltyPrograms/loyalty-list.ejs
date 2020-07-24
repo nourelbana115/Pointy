@@ -1,0 +1,75 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="/assets/css/photoswipe.css">
+
+<%- contentFor('breadcrumb_title')%>
+programs List
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Loyalty programs </li>
+<li class="breadcrumb-item">programs List</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <a href="/loyaltyprogram/create" class="btn btn-success btn-lg pull-right">Create program</a>
+    </div>
+  </div>
+  <hr>
+  <p style="font-size: x-large;" class ="card-header">Punch based loyalty</p>
+  <div class="row">
+    <% for (program of loyaltyPrograms) { %>
+      <%if (program.loyaltyType==2&&program.status=="active"){ %>
+        <div class="col-sm-12 col-xl-3">
+          <div class="card">
+            <div class="card-header b-l-primary">
+              <a href="/loyaltyprogram/list/<%= program._id %>">
+                <h5><%= program.title %></h5>
+                <hr>
+                <img class="img-fluid img-thumbnail" src="/uploads/<%= program.coverImageUrl %>">
+              </a>
+            </div>
+            <div class="card-body">
+              <p><%= program.description %></p>
+            </div>
+          </div>
+        </div>
+
+     <% }  %>  
+  
+    <% } %>
+  </div>
+</div>
+
+
+<hr>
+<p style="font-size: x-large;">Point based programs list</p>
+<div class="row">
+  <% for (program of loyaltyPrograms) { %>
+    <%if (program.loyaltyType==1){ %>
+      <div class="col-sm-12 col-xl-3">
+        <div class="card">
+          <div class="card-header b-l-primary">
+            <a href="/loyaltyprogram/list/<%= program._id %>">
+              <h5><%= program.title %></h5>
+              <hr>
+              <img class="img-fluid img-thumbnail" src="/uploads/<%= program.coverImageUrl %>">
+            </a>
+          </div>
+          <div class="card-body">
+            <p><%= program.description %></p>
+          </div>
+        </div>
+      </div>
+
+   <% }  %>  
+
+  <% } %>
+</div>
+</div>
+
+
+<script src="<%= global.url %>assets/js/tooltip-init.js"></script>

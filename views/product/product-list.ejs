@@ -1,0 +1,114 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="<%= global.url; %>assets/css/datatables.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="<%= global.url; %>assets/css/owlcarousel.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="<%= global.url; %>assets/css/rating.css"
+/>
+
+<%- contentFor('title')%> Product list <%- contentFor('breadcrumb_title')%>
+Product list <%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Products</li>
+<li class="breadcrumb-item active">Product list</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Individual column searching (text inputs) Starts-->
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <a href="/product/create" class="btn btn-lg btn-success pull-right">Add product</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive product-table">
+            <table class="display" id="basic-1">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Details</th>
+                  <th>Amount</th>
+                  <th>Price</th>
+                 
+                  <th>Start date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <% for(product of products){ %>
+
+                <tr>
+                  <td>
+                    <img
+                      src="/uploads/<%= product.imageUrl %>"
+                      height="64"
+                      width="64"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <h6><%= product.title %></h6>
+                    <span><%= product.description %> </span>
+                  </td>
+                  <td><%= product.amount %></td>
+                  <td><%= product.price %></td>
+            
+                  <td>
+                    <%= product.updatedAt.getDate() %>/<%=
+                    product.updatedAt.getMonth()%>/<%=
+                    product.updatedAt.getFullYear()%>
+                  </td>
+                  <td>
+                    <form action="/api/v1/product/delete" method="POST">
+                      <input
+                        type="hidden"
+                        name="_id"
+                        value="<%=product._id  %>"
+                      />
+
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-xs"
+                        title=""
+                      >
+                        Delete
+                      </button>
+                    </form>
+
+                    <a
+                      style="display: inline-block ;  position: relative;  bottom: 38px; left: 82px ;"
+                      class="btn btn-success btn-xxxxxs "
+                      href="/product/edit/<%= product._id %>"
+                      >Edit</a
+                    >
+                  </td>
+                </tr>
+
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Individual column searching (text inputs) Ends-->
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<script src="<%= global.url; %>assets/js/owlcarousel/owl.carousel.js"></script>
+<script src="<%= global.url; %>assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="<%= global.url; %>assets/js/rating/jquery.barrating.js"></script>
+<script src="<%= global.url; %>assets/js/rating/rating-script.js"></script>
+<script src="<%= global.url; %>assets/js/ecommerce.js"></script>
+<script src="<%= global.url; %>assets/js/product-list-custom.js"></script>

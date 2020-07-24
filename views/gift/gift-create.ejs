@@ -1,0 +1,77 @@
+<%- contentFor('title')%>
+Create Gift
+
+<%- contentFor('breadcrumb_title')%>
+Create Gift
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Gift</li>
+<li class="breadcrumb-item">Create Gift</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <% if(error.length) { %>
+        <div class="col-sm-12 alert alert-danger" role="alert">
+          <h6><%= error %></h6>
+        </div>
+        <% }%>
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Create Gift</h5>
+            </div>
+            <div class="card-body">
+              <form action="/api/v1/gift/create" enctype="multipart/form-data" method="POST" class="form theme-form">
+                <h6>Gift Information</h6>
+                <div class="form-group">
+                  <label class="col-form-label">Title</label>
+                  <input name="title" class="form-control" type="text" placeholder="Gift" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Arabic Title</label>
+                  <input name="title_ar" class="form-control" type="text" placeholder="هدية" required>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Description</label>
+                  <textarea name="description" class="form-control" placeholder="Free Gift" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Arabic Description</label>
+                  <textarea name="description_ar" class="form-control" placeholder="هدية مجانية" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Image URL</label>
+                  <input name="coverImage" class="form-control" type="file" placeholder="Image Url">
+                </div>
+                <hr class="mt-4 mb-4">
+                <h6>Gift Data</h6>
+                <div class="form-group">
+                  <label for="col-form-label">Segment</label>
+                  <select name="segmentName" class="form-control digits">
+                    <option value="everyone">Everyone</option>
+                    <option value="superFans">Super Fans</option>
+                    <option value="newCustomers">New Customers</option>
+                    <option value="birthday">Birthday Customers</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Number of Valid Days</label>
+                  <input name="numOfValidDays" class="form-control" type="number" placeholder="0" min="0" required>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

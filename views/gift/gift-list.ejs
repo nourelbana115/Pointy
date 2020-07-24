@@ -1,0 +1,44 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="/assets/css/photoswipe.css">
+
+<%- contentFor('breadcrumb_title')%>
+Gift List
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Gifts</li>
+<li class="breadcrumb-item">Gifts List</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <a href="/gift/create" class="btn btn-success btn-lg pull-right">Create Gift</a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <% for (gift of gifts) { %>
+    <div class="col-sm-12 col-xl-3">
+      <div class="card">
+        <div class="card-header b-l-primary">
+          <a href="/gift/list/<%= gift._id %>">
+            <h5><%= gift.title %></h5>
+            <hr>
+            <img class="img-fluid img-thumbnail" src="/uploads/<%= gift.coverImage %>">
+          </a>
+        </div>
+        <div class="card-body">
+          <p><%= gift.description %></p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+<script src="<%= global.url %>assets/js/tooltip-init.js"></script>

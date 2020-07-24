@@ -1,0 +1,45 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" type="text/css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<%- contentFor('breadcrumb_title')%>
+Gift details
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Gifts</li>
+<li class="breadcrumb-item">Gift details</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+
+<div class="card mb-3 centered" style="max-width: 1000px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/uploads/<%= gift.coverImage %>" class="card-img responsive" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title">
+          <%= gift.title %>
+        </h1>
+        <hr>
+        <h4>
+          <%= gift.description %>
+        </h4>
+        <br>
+        <h4 class="text-right">
+          Valid until: <%= giftValidUntil.toDateString() %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Container-fluid Ends-->

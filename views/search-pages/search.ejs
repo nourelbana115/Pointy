@@ -1,0 +1,240 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="<%= global.url; %>assets/css/photoswipe.css"
+/>
+
+<%- contentFor('title')%> Search Website <%- contentFor('breadcrumb_title')%>
+Search Website <%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Search Pages</li>
+<li class="breadcrumb-item active">Search Website</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid search-page">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="all-link"
+                data-toggle="tab"
+                href="#all-links"
+                role="tab"
+                aria-selected="true"
+                ><i class="icon-target"></i>All</a
+              >
+              <div class="material-border"></div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="image-link"
+                data-toggle="tab"
+                href="#image-links"
+                role="tab"
+                aria-selected="false"
+                ><i class="icon-gift"></i>Gifts</a
+              >
+              <div class="material-border"></div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="video-link"
+                data-toggle="tab"
+                href="#video-links"
+                role="tab"
+                aria-selected="false"
+                ><i class="icon-book"></i>Loyalty programs</a
+              >
+              <div class="material-border"></div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="map-link"
+                data-toggle="tab"
+                href="#map-links"
+                role="tab"
+                aria-selected="false"
+                ><i class="icon-user"></i>customers</a
+              >
+              <div class="material-border"></div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="setting-link"
+                data-toggle="tab"
+                href="#setting-links"
+                role="tab"
+                aria-selected="false"
+                ><i class="icon-package"></i>Products</a
+              >
+              <div class="material-border"></div>
+            </li>
+          </ul>
+          <div class="tab-content" id="top-tabContent">
+            <div
+              class="search-links tab-pane fade show active"
+              id="all-links"
+              role="tabpanel"
+              aria-labelledby="all-link"
+            >
+              <div class="row">
+                <div class="col-xl-6">
+                  <% for (model of models){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/<%=model  %>/list"><%= model %> list </a>
+                    </h6>
+                  </div>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/<%=model  %>/create">
+                        create <%= model %>
+                      </a>
+                    </h6>
+                  </div>
+
+                  <% } %> <% for(items of searchItems){ %> <%for(item of items){
+                  %> <% if(item.customers){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/gift/list/<%= item._id %> "
+                        ><%=item.title %>
+                      </a>
+                    </h6>
+                    <p><%= item.description %></p>
+                  </div>
+                  <% }else if(item.loyaltyType){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/loyaltyprogram/list/<%= item._id %> "
+                        ><%=item.title %>
+                      </a>
+                    </h6>
+                    <p><%= item.description %></p>
+                  </div>
+
+                  <% }else if(item.price){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/product/edit/<%= item._id %> "
+                        ><%=item.title %>
+                      </a>
+                    </h6>
+                    <p><%= item.description %></p>
+                  </div>
+                  <% }else if(item.email){ %>
+                  <div class="info-block">
+                    <p><%= item.name %></p>
+                  </div>
+                  <% }else{ %>
+                  <div class="info-block">
+                    <p>No results</p>
+                  </div>
+                  <% } %> <%} %> <%} %>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="image-links"
+              role="tabpanel"
+              aria-labelledby="image-link"
+            >
+              <div class="col-xl-6">
+                <% for(items of searchItems){ %> <%for(item of items){ %> <%
+                if(item.customers){ %>
+                <div class="info-block">
+                  <h6>
+                    <a href="/gift/list/<%= item._id %> "><%=item.title %> </a>
+                  </h6>
+                  <p><%= item.description %></p>
+                </div>
+                <% } %> <% } }%>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="video-links"
+              role="tabpanel"
+              aria-labelledby="video-link"
+            >
+              <div class="row">
+                <div class="col-xl-6">
+                  <% for(items of searchItems){ %> <%for(item of items){ %> <%
+                  if(item.loyaltyType){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/loyaltyprogram/list/<%= item._id %> "
+                        ><%=item.title %>
+                      </a>
+                    </h6>
+                    <p><%= item.description %></p>
+                  </div>
+                  <% } %> <% } }%>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="map-links"
+              role="tabpanel"
+              aria-labelledby="map-link"
+            >
+              <div class="row">
+                <div class="col-xl-6">
+                  <% for(items of searchItems){ %> <%for(item of items){ %> <%
+                  if(item.email){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/customer"><%=item.name %> </a>
+                    </h6>
+                  </div>
+                  <% }%> <% } }%>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="setting-links"
+              role="tabpanel"
+              aria-labelledby="setting-link"
+            >
+              <div class="row">
+                <div class="col-xl-6">
+                  <% for(items of searchItems){ %> <%for(item of items){ %> <%
+                  if(item.price){ %>
+                  <div class="info-block">
+                    <h6>
+                      <a href="/product/edit/<%= item._id %> "
+                        ><%=item.title %>
+                      </a>
+                    </h6>
+                    <p><%= item.description %></p>
+                  </div>
+
+                  <% }} }%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<script src="<%= global.url; %>assets/js/photoswipe/photoswipe.min.js"></script>
+<script src="<%= global.url; %>assets/js/photoswipe/photoswipe-ui-default.min.js"></script>
+<script src="<%= global.url; %>assets/js/photoswipe/photoswipe.js"></script>

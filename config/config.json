@@ -1,0 +1,22 @@
+{
+  "development": {
+    "PORT": 3001,
+    "MONGODB_URL": "mongodb://localhost:27017/PointyApp",
+    "JWT_SECRET": "hjn8g4j84ghj8gfh4jffng641n",
+    "AWS_SES_KEY": "AKIAWMVII7VGVQ6AIROX",
+    "AWS_SES_SECRET": "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",
+    "AWS_SES_URL": "email-smtp.eu-central-1.amazonaws.com",
+    "DEFUALT_SES_MAIL": "moh.y.oraby@gmail.com",
+    "AWS_SES_REGION": "eu-central-1"
+  },
+  "production": {
+    "PORT": 3002,
+    "MONGODB_URL": "mongodb://localhost:27017/PointyApp",
+    "JWT_SECRET": "hjn8g4j84ghj8gfh4jffng641n",
+    "AWS_SES_KEY": "AKIAWMVII7VGVQ6AIROX",
+    "AWS_SES_SECRET": "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",
+    "AWS_SES_URL": "email-smtp.eu-central-1.amazonaws.com",
+    "DEFUALT_SES_MAIL": "moh.y.oraby@gmail.com",
+    "AWS_SES_REGION": "eu-central-1"
+  }
+}

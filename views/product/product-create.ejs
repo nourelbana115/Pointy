@@ -1,0 +1,116 @@
+<%- contentFor('title')%> Add product <%- contentFor('breadcrumb_title')%> Add
+product <%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Products</li>
+<li class="breadcrumb-item">Add Product</li>
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>ِAdd Product</h5>
+            </div>
+            <div class="card-body">
+              <form
+                action="/api/v1/product/add"
+                enctype="multipart/form-data"
+                method="POST"
+                class="form theme-form"
+              >
+                <h6>Product information</h6>
+
+                <div class="form-group">
+                  <label class="col-form-label">Title</label>
+                  <input
+                    name="title"
+                    class="form-control"
+                    type="text"
+                    placeholder="tea"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Arabic Title</label>
+                  <input
+                    name="title_ar"
+                    class="form-control"
+                    type="text"
+                    placeholder="شاي"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Description</label>
+                  <input
+                    name="description"
+                    class="form-control"
+                    type="text"
+                    placeholder="The best tea"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Arabic Description</label>
+                  <input
+                    name="description_ar"
+                    class="form-control"
+                    type="text"
+                    placeholder="افضل شاي"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Image URL</label>
+                  <input
+                    name="imageUrl"
+                    class="form-control"
+                    type="file"
+                    placeholder="Image Url"
+                    required
+                  />
+                </div>
+                <hr class="mt-4 mb-4" />
+                <h6>Product data</h6>
+          
+                <div class="form-group">
+                  <label class="col-form-label">Amount</label>
+                  <input
+                    name="amount"
+                    class="form-control"
+                    type="number"
+                    placeholder="10"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Price</label>
+                  <input
+                    name="price"
+                    id="points"
+                    class="form-control"
+                    type="number"
+                    placeholder="50"
+                    required
+                  />
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container-fluid Ends-->

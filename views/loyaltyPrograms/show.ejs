@@ -1,0 +1,110 @@
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- Latest compiled and minified CSS -->
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+/>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<%- contentFor('breadcrumb_title')%> Program details <%-
+contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Loyalty program</li>
+<li class="breadcrumb-item">Program details</li>
+
+<%- contentFor('body') %>
+
+<!-- Container-fluid starts-->
+
+<% for(program of loyaltyPrograms) { %>
+
+<div class="card mb-3 centered" style="max-width: 1000px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img
+        src="/uploads/<%= program.coverImageUrl %>"
+        class="card-img responsive"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title">
+          <%= program.title %>
+        </h1>
+        <h3>
+          <%= program.description %>
+        </h3>
+        <h3 class="card-text">
+          <%= program.description_ar %>
+        </h3>
+        <h4>Valid until : <%= programValidUntil.toDateString() %></h4>
+        <% if(program.loyaltyType==1){ %>
+        <h4 id="point">Point value : <%= program.pointValue %></h4>
+        <% } %>
+        <h4 id="type">Type : <%= program.loyaltyType %></h4>
+        <% if(program.loyaltyType==2){ %>
+        <h4 id="max">Max : <%= program.max %></h4>
+        <h4 id="min">Min : <%= program.min %></h4>
+        <h4 id="avg">Avg : <%= program.avg %></h4>
+        <% } %>
+        <h5>Program status : <%= program.status %></h5>
+
+        <p class="card-text">
+          <small class="text-muted"
+            >Updated at <%= program.updatedAt.getDate() %>/<%=
+            program.updatedAt.getMonth()%>/<%= program.updatedAt.getFullYear()%>
+            <%= program.updatedAt.getHours()%>:<%=
+            program.updatedAt.getMinutes()%>:<%=
+            program.updatedAt.getSeconds()%>
+          </small>
+        </p>
+        <p class="card-text">
+          <small class="text-muted"
+            >Created at <%= program.createdAt.getDate() %>/<%=
+            program.updatedAt.getMonth()%>/<%= program.updatedAt.getFullYear()%>
+            <%= program.updatedAt.getHours()%>:<%=
+            program.updatedAt.getMinutes()%>:<%=
+            program.updatedAt.getSeconds()%>
+          </small>
+        </p>
+        <form
+          style="position: relative;  bottom: -71px; left: 15px; "
+          action="/api/v1/loyaltyProgram/delete/<%=program._id%>"
+          method="POST"
+          id="button1"
+        >
+          <button class="ui red basic button">Delete</button>
+        </form>
+
+        <form
+          style="position: relative;  bottom: -45px; left: 80px; "
+          action="/api/v1/loyaltyProgram/activate/<%=program._id%>"
+          method="POST"
+          id="button2"
+        >
+          <button class="ui positive basic button">Activate</button>
+        </form>
+        <form
+          style="position: relative; bottom: -19px;   left: 153px;"
+          action="/api/v1/loyaltyProgram/deactivate/<%=program._id%>"
+          method="POST"
+          id="button3"
+        >
+          <button class="ui grey basic button">Deactivate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
+
+<!-- Container-fluid Ends-->

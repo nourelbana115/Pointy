@@ -1,0 +1,281 @@
+
+
+
+
+<%- contentFor('title')%>
+create loyalty program
+
+<%- contentFor('breadcrumb_title')%>
+create program
+
+
+<%- contentFor('breadcrumb_item') %>
+<li class="breadcrumb-item">Loyalty programs</li>
+<li class="breadcrumb-item">Create program</li>
+
+
+<%- contentFor('body') %>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                
+                <div class="card-body">
+                    <div class="stepwizard">
+                        <div class="stepwizard-row setup-panel">
+                            <div class="stepwizard-step"><a class="btn btn-primary" href="#step-1">Point based</a>
+                                
+                            </div>
+                            <div class="stepwizard-step"><a class="btn btn-light" href="#step-2">Punch based</a>
+                                
+                            </div>
+                         
+                        </div>
+                    </div>
+                    
+                        <div class="setup-content" id="step-1">
+                          <form
+                          action="/api/v1/loyaltyProgram/add"
+                          enctype="multipart/form-data"
+                          method="POST"
+                          class="form theme-form"
+                        >
+                          <h6 style="font-size: large;">Point based loyalty program information</h6>
+          
+                          <input name="loyaltyType" value="1" hidden type="text">
+          
+                          <div class="form-group">
+                            <label class="col-form-label">Title</label>
+                            <input
+                              name="title"
+                              class="form-control"
+                              type="text"
+                              placeholder="Title"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Arabic Title</label>
+                            <input
+                              name="title_ar"
+                              class="form-control"
+                              type="text"
+                              placeholder="برنامج الولاء"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Description</label>
+                            <input
+                              name="description"
+                              class="form-control"
+                              type="text"
+                              placeholder="Free tea"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Arabic Description</label>
+                            <input
+                              name="description_ar"
+                              class="form-control"
+                              type="text"
+                              placeholder="كوب قهوه مجاني"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Image URL</label>
+                            <input
+                              name="coverImageUrl"
+                              class="form-control"
+                              type="file"
+                              placeholder="Image Url"
+                              required
+                            />
+                          </div>
+                          <hr class="mt-4 mb-4" />
+                          <h6>Loyalty program data</h6>
+                          <div class="form-group">
+                            <label class="col-form-label">Status</label>
+                            <input
+                              name="status"
+                              class="form-control"
+                              type="text"
+                              placeholder="active"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Number of Valid Days</label>
+                            <input
+                              name="numOfValidDays"
+                              class="form-control"
+                              type="number"
+                              placeholder="10"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Point value</label>
+                            <input
+                              name="pointValue"
+                              id="points"
+                              class="form-control"
+                              type="number"
+                              placeholder="50"
+                            />
+                          </div>
+                     
+                       
+                        
+                          <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                          </div>
+                        </form>
+                          
+                        </div>
+                        <div class="setup-content" id="step-2">
+
+                          <form
+                          action="/api/v1/loyaltyProgram/add"
+                          enctype="multipart/form-data"
+                          method="POST"
+                          class="form theme-form"
+                        >
+                          <h6 style="font-size: large;">Punch based loyalty program information</h6>
+          
+                          
+                         
+                             <input name="loyaltyType" value="2" hidden type="text">
+                         
+          
+                          <div class="form-group">
+                            <label class="col-form-label">Title</label>
+                            <input
+                              name="title"
+                              class="form-control"
+                              type="text"
+                              placeholder="Title"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Arabic Title</label>
+                            <input
+                              name="title_ar"
+                              class="form-control"
+                              type="text"
+                              placeholder="برنامج الولاء"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Description</label>
+                            <input
+                              name="description"
+                              class="form-control"
+                              type="text"
+                              placeholder="Free tea"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Arabic Description</label>
+                            <input
+                              name="description_ar"
+                              class="form-control"
+                              type="text"
+                              placeholder="كوب قهوه مجاني"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Image URL</label>
+                            <input
+                              name="coverImageUrl"
+                              class="form-control"
+                              type="file"
+                              placeholder="Image Url"
+                              required
+                            />
+                          </div>
+                          <hr class="mt-4 mb-4" />
+                          <h6>Loyalty program data</h6>
+                          <div class="form-group">
+                            <label class="col-form-label">Status</label>
+                            <input
+                              name="status"
+                              class="form-control"
+                              type="text"
+                              placeholder="active"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Number of Valid Days</label>
+                            <input
+                              name="numOfValidDays"
+                              class="form-control"
+                              type="number"
+                              placeholder="10"
+                            />
+                          </div>
+                        
+                          <div class="form-group">
+                            <label class="col-form-label">Min</label>
+                            <input
+                              name="min"
+                              id="min"
+                              class="form-control"
+                              type="number"
+                              placeholder="5"
+                              
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Average</label>
+                            <input
+                              name="avg"
+                              id="avg"
+                              class="form-control"
+                              type="number"
+                              placeholder="10"
+                              
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Max</label>
+                            <input
+                              name="max"
+                              id="max"
+                              class="form-control"
+                              type="number"
+                              placeholder="12"
+                              
+                            />
+                          </div>
+                          <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                          </div>
+                        </form>
+                            
+                        </div>
+                  
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+
+
+<script src="<%= global.url; %>assets/js/form-wizard/form-wizard-two.js"></script>
